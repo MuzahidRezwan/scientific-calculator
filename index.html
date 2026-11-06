@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OmniCalc — Advanced Scientific Calculator</title>
+  <title>OmniCalc PRO — Scientific, Equations & DIU CGPA Suite</title>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,101 +14,272 @@
   <div class="background-glow glow-2"></div>
 
   <main class="calculator-container">
-    <header class="calc-header">
+    <!-- Top App Navigation Tabs -->
+    <header class="app-nav">
       <div class="brand">
         <span class="logo-dot"></span>
         <h1>OmniCalc <span class="badge">PRO</span></h1>
       </div>
-      <div class="mode-switch">
-        <button id="deg-rad-btn" class="pill-btn" title="Toggle Degrees / Radians">DEG</button>
-        <button id="history-toggle" class="icon-btn" title="View History">📜</button>
-      </div>
+      <nav class="nav-tabs">
+        <button class="nav-tab active" data-tab="tab-scientific">🔬 Scientific</button>
+        <button class="nav-tab" data-tab="tab-equations">📐 Equations</button>
+        <button class="nav-tab" data-tab="tab-cgpa">🎓 DIU CGPA</button>
+      </nav>
     </header>
 
-    <!-- Display Screen -->
-    <section class="screen-wrapper">
-      <div class="screen-history" id="expression-display"></div>
-      <div class="screen-main" id="main-display">0</div>
-      <div class="screen-status">
-        <span id="angle-mode-indicator">DEG</span>
-        <span id="memory-indicator" class="hidden">M</span>
+    <!-- ================= TAB 1: SCIENTIFIC CALCULATOR ================= -->
+    <section id="tab-scientific" class="tab-pane active">
+      <div class="calc-sub-header">
+        <div class="mode-switch">
+          <button id="deg-rad-btn" class="pill-btn" title="Toggle Degrees / Radians">DEG</button>
+          <button id="history-toggle" class="icon-btn" title="View History">📜 History</button>
+        </div>
+      </div>
+
+      <!-- Display Screen -->
+      <div class="screen-wrapper">
+        <div class="screen-history" id="expression-display"></div>
+        <div class="screen-main" id="main-display">0</div>
+        <div class="screen-status">
+          <span id="angle-mode-indicator">DEG</span>
+          <span id="memory-indicator" class="hidden">M</span>
+        </div>
+      </div>
+
+      <!-- Keypad Grid -->
+      <div class="keypad-grid">
+        <!-- Row 1: Memory & Secondary -->
+        <button class="btn btn-fn" data-action="mc">MC</button>
+        <button class="btn btn-fn" data-action="mr">MR</button>
+        <button class="btn btn-fn" data-action="m-plus">M+</button>
+        <button class="btn btn-fn" data-action="m-minus">M-</button>
+        <button class="btn btn-danger" data-action="clear">AC</button>
+        <button class="btn btn-danger" data-action="backspace">⌫</button>
+
+        <!-- Row 2: Trig & Constants -->
+        <button class="btn btn-sci" data-action="sin">sin</button>
+        <button class="btn btn-sci" data-action="cos">cos</button>
+        <button class="btn btn-sci" data-action="tan">tan</button>
+        <button class="btn btn-sci" data-action="pi">π</button>
+        <button class="btn btn-sci" data-action="e">e</button>
+        <button class="btn btn-op" data-op="/">÷</button>
+
+        <!-- Row 3: Advanced Math -->
+        <button class="btn btn-sci" data-action="asin">sin⁻¹</button>
+        <button class="btn btn-sci" data-action="acos">cos⁻¹</button>
+        <button class="btn btn-sci" data-action="atan">tan⁻¹</button>
+        <button class="btn btn-sci" data-action="power">x^y</button>
+        <button class="btn btn-sci" data-action="square">x²</button>
+        <button class="btn btn-op" data-op="*">×</button>
+
+        <!-- Row 4: Log, Roots & Numbers 7-9 -->
+        <button class="btn btn-sci" data-action="log">log</button>
+        <button class="btn btn-sci" data-action="ln">ln</button>
+        <button class="btn btn-sci" data-action="sqrt">√x</button>
+        <button class="btn btn-num" data-val="7">7</button>
+        <button class="btn btn-num" data-val="8">8</button>
+        <button class="btn btn-num" data-val="9">9</button>
+        <button class="btn btn-op" data-op="-">−</button>
+
+        <!-- Row 5: Factorial, Parentheses & Numbers 4-6 -->
+        <button class="btn btn-sci" data-action="fact">n!</button>
+        <button class="btn btn-sci" data-val="(">(</button>
+        <button class="btn btn-sci" data-val=")">)</button>
+        <button class="btn btn-num" data-val="4">4</button>
+        <button class="btn btn-num" data-val="5">5</button>
+        <button class="btn btn-num" data-val="6">6</button>
+        <button class="btn btn-op" data-op="+">+</button>
+
+        <!-- Row 6: Reciprocal, Percent & Numbers 1-3 -->
+        <button class="btn btn-sci" data-action="inv">1/x</button>
+        <button class="btn btn-sci" data-action="abs">|x|</button>
+        <button class="btn btn-op" data-op="%">%</button>
+        <button class="btn btn-num" data-val="1">1</button>
+        <button class="btn btn-num" data-val="2">2</button>
+        <button class="btn btn-num" data-val="3">3</button>
+        <button class="btn btn-equal" id="btn-equals" data-action="calculate">=</button>
+
+        <!-- Row 7: Negate, Zero, Decimal -->
+        <button class="btn btn-sci" data-action="exp">EXP</button>
+        <button class="btn btn-num" data-action="negate">±</button>
+        <button class="btn btn-num btn-zero" data-val="0">0</button>
+        <button class="btn btn-num" data-val=".">.</button>
+      </div>
+
+      <!-- Calculation History Drawer -->
+      <aside class="history-drawer" id="history-drawer">
+        <div class="history-header">
+          <h3>Calculation History</h3>
+          <button id="clear-history-btn" class="pill-btn danger">Clear</button>
+          <button id="close-history-btn" class="icon-btn">✕</button>
+        </div>
+        <ul class="history-list" id="history-list">
+          <li class="empty-state">No calculations yet</li>
+        </ul>
+      </aside>
+    </section>
+
+    <!-- ================= TAB 2: EQUATION SOLVER ================= -->
+    <section id="tab-equations" class="tab-pane">
+      <div class="section-title">
+        <h2>Mathematical Equation Solvers</h2>
+        <p>Step-by-step solutions for Quadratic & Simultaneous Linear Equations</p>
+      </div>
+
+      <!-- Quadratic Equation Solver -->
+      <div class="solver-card">
+        <div class="card-header">
+          <h3>1. Quadratic Equation: <code>ax² + bx + c = 0</code></h3>
+        </div>
+        <div class="input-row">
+          <div class="input-group">
+            <label>a (coeff x²)</label>
+            <input type="number" id="quad-a" placeholder="1" value="1" step="any">
+          </div>
+          <div class="input-group">
+            <label>b (coeff x)</label>
+            <input type="number" id="quad-b" placeholder="-5" value="-5" step="any">
+          </div>
+          <div class="input-group">
+            <label>c (constant)</label>
+            <input type="number" id="quad-c" placeholder="6" value="6" step="any">
+          </div>
+        </div>
+        <button class="btn btn-action" id="solve-quadratic-btn">Solve Quadratic Equation</button>
+        <div class="solution-box" id="quad-solution">
+          <div class="formula-info">Roots: x = (-b ± √(b² - 4ac)) / (2a)</div>
+          <div class="solution-output" id="quad-output">Press solve to calculate roots</div>
+        </div>
+      </div>
+
+      <!-- 2x2 Simultaneous Linear System -->
+      <div class="solver-card">
+        <div class="card-header">
+          <h3>2. System of 2 Linear Equations (Cramer's Rule)</h3>
+          <p class="subtext">a₁x + b₁y = c₁ &nbsp;|&nbsp; a₂x + b₂y = c₂</p>
+        </div>
+        <div class="linear-grid">
+          <div class="eq-row">
+            <span>Eq 1:</span>
+            <input type="number" id="lin-a1" placeholder="a₁" value="2" step="any"> x +
+            <input type="number" id="lin-b1" placeholder="b₁" value="3" step="any"> y =
+            <input type="number" id="lin-c1" placeholder="c₁" value="13" step="any">
+          </div>
+          <div class="eq-row">
+            <span>Eq 2:</span>
+            <input type="number" id="lin-a2" placeholder="a₂" value="1" step="any"> x -
+            <input type="number" id="lin-b2" placeholder="b₂" value="2" step="any"> y =
+            <input type="number" id="lin-c2" placeholder="c₂" value="-4" step="any">
+          </div>
+        </div>
+        <button class="btn btn-action" id="solve-linear-btn">Solve System of Equations</button>
+        <div class="solution-box" id="linear-solution">
+          <div class="solution-output" id="linear-output">Press solve to calculate (x, y)</div>
+        </div>
       </div>
     </section>
 
-    <!-- Keypad Grid -->
-    <section class="keypad-grid">
-      <!-- Row 1: Memory & Secondary -->
-      <button class="btn btn-fn" data-action="mc">MC</button>
-      <button class="btn btn-fn" data-action="mr">MR</button>
-      <button class="btn btn-fn" data-action="m-plus">M+</button>
-      <button class="btn btn-fn" data-action="m-minus">M-</button>
-      <button class="btn btn-danger" data-action="clear">AC</button>
-      <button class="btn btn-danger" data-action="backspace">⌫</button>
+    <!-- ================= TAB 3: DIU CGPA CALCULATOR ================= -->
+    <section id="tab-cgpa" class="tab-pane">
+      <div class="section-title">
+        <h2>🎓 Daffodil International University (DIU) CGPA Calculator</h2>
+        <p>Calculated strictly following DIU & UGC Approved 4.00 Official Grading Scale</p>
+      </div>
 
-      <!-- Row 2: Trig & Constants -->
-      <button class="btn btn-sci" data-action="sin">sin</button>
-      <button class="btn btn-sci" data-action="cos">cos</button>
-      <button class="btn btn-sci" data-action="tan">tan</button>
-      <button class="btn btn-sci" data-action="pi">π</button>
-      <button class="btn btn-sci" data-action="e">e</button>
-      <button class="btn btn-op" data-op="/">÷</button>
+      <!-- Cumulative CGPA Option -->
+      <div class="cgpa-meta-card">
+        <div class="input-row">
+          <div class="input-group">
+            <label>Previous Cumulative CGPA (Optional)</label>
+            <input type="number" id="prev-cgpa" placeholder="e.g. 3.75" step="0.01" min="0" max="4.0">
+          </div>
+          <div class="input-group">
+            <label>Previous Total Credits Completed</label>
+            <input type="number" id="prev-credits" placeholder="e.g. 45" step="0.5" min="0">
+          </div>
+        </div>
+      </div>
 
-      <!-- Row 3: Advanced Math -->
-      <button class="btn btn-sci" data-action="asin">sin⁻¹</button>
-      <button class="btn btn-sci" data-action="acos">cos⁻¹</button>
-      <button class="btn btn-sci" data-action="atan">tan⁻¹</button>
-      <button class="btn btn-sci" data-action="power">x^y</button>
-      <button class="btn btn-sci" data-action="square">x²</button>
-      <button class="btn btn-op" data-op="*">×</button>
+      <!-- Course List -->
+      <div class="courses-card">
+        <div class="courses-header">
+          <h3>Current Semester Courses</h3>
+          <button id="add-course-btn" class="pill-btn">+ Add Course</button>
+        </div>
 
-      <!-- Row 4: Log, Roots & Numbers 7-9 -->
-      <button class="btn btn-sci" data-action="log">log</button>
-      <button class="btn btn-sci" data-action="ln">ln</button>
-      <button class="btn btn-sci" data-action="sqrt">√x</button>
-      <button class="btn btn-num" data-val="7">7</button>
-      <button class="btn btn-num" data-val="8">8</button>
-      <button class="btn btn-num" data-val="9">9</button>
-      <button class="btn btn-op" data-op="-">−</button>
+        <div class="table-responsive">
+          <table class="course-table">
+            <thead>
+              <tr>
+                <th>Course Title</th>
+                <th width="100px">Credits</th>
+                <th width="130px">Grade</th>
+                <th width="80px">Point</th>
+                <th width="50px"></th>
+              </tr>
+            </thead>
+            <tbody id="course-list-body">
+              <!-- Courses generated by JS -->
+            </tbody>
+          </table>
+        </div>
 
-      <!-- Row 5: Factorial, Parentheses & Numbers 4-6 -->
-      <button class="btn btn-sci" data-action="fact">n!</button>
-      <button class="btn btn-sci" data-val="(">(</button>
-      <button class="btn btn-sci" data-val=")">)</button>
-      <button class="btn btn-num" data-val="4">4</button>
-      <button class="btn btn-num" data-val="5">5</button>
-      <button class="btn btn-num" data-val="6">6</button>
-      <button class="btn btn-op" data-op="+">+</button>
+        <div class="cgpa-actions">
+          <button class="btn btn-action" id="calculate-cgpa-btn">Calculate SGPA & Cumulative CGPA</button>
+          <button class="btn btn-danger-pill" id="reset-courses-btn">Reset</button>
+        </div>
+      </div>
 
-      <!-- Row 6: Reciprocal, Percent & Numbers 1-3 -->
-      <button class="btn btn-sci" data-action="inv">1/x</button>
-      <button class="btn btn-sci" data-action="abs">|x|</button>
-      <button class="btn btn-op" data-op="%">%</button>
-      <button class="btn btn-num" data-val="1">1</button>
-      <button class="btn btn-num" data-val="2">2</button>
-      <button class="btn btn-num" data-val="3">3</button>
-      <button class="btn btn-equal" id="btn-equals" data-action="calculate">=</button>
+      <!-- CGPA Result Card -->
+      <div class="cgpa-result-card" id="cgpa-result-card">
+        <div class="cgpa-metrics">
+          <div class="metric-box">
+            <span class="metric-label">Semester SGPA</span>
+            <span class="metric-val" id="res-sgpa">--</span>
+          </div>
+          <div class="metric-box highlight">
+            <span class="metric-label">Cumulative CGPA</span>
+            <span class="metric-val" id="res-cgpa">--</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-label">Credits Earned</span>
+            <span class="metric-val" id="res-credits">--</span>
+          </div>
+        </div>
+        <div class="standing-banner" id="res-standing">Enter courses and click calculate</div>
+      </div>
 
-      <!-- Row 7: Negate, Zero, Decimal -->
-      <button class="btn btn-sci" data-action="exp">EXP</button>
-      <button class="btn btn-num" data-action="negate">±</button>
-      <button class="btn btn-num btn-zero" data-val="0">0</button>
-      <button class="btn btn-num" data-val=".">.</button>
+      <!-- DIU Official Grading Scale Reference Table -->
+      <details class="diu-grade-sheet">
+        <summary>📋 View Official DIU Grading Scale Reference</summary>
+        <table class="reference-table">
+          <thead>
+            <tr>
+              <th>Marks Range</th>
+              <th>Letter Grade</th>
+              <th>Grade Point</th>
+              <th>Remarks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>80% and above</td><td><b>A+</b></td><td>4.00</td><td>Outstanding</td></tr>
+            <tr><td>75% to &lt; 80%</td><td><b>A</b></td><td>3.75</td><td>Excellent</td></tr>
+            <tr><td>70% to &lt; 75%</td><td><b>A-</b></td><td>3.50</td><td>Very Good</td></tr>
+            <tr><td>65% to &lt; 70%</td><td><b>B+</b></td><td>3.25</td><td>Good</td></tr>
+            <tr><td>60% to &lt; 65%</td><td><b>B</b></td><td>3.00</td><td>Satisfactory</td></tr>
+            <tr><td>55% to &lt; 60%</td><td><b>B-</b></td><td>2.75</td><td>Above Average</td></tr>
+            <tr><td>50% to &lt; 55%</td><td><b>C+</b></td><td>2.50</td><td>Average</td></tr>
+            <tr><td>45% to &lt; 50%</td><td><b>C</b></td><td>2.25</td><td>Below Average</td></tr>
+            <tr><td>40% to &lt; 45%</td><td><b>D</b></td><td>2.00</td><td>Pass</td></tr>
+            <tr><td>Less than 40%</td><td><b style="color:#ef4444">F</b></td><td>0.00</td><td>Fail</td></tr>
+          </tbody>
+        </table>
+      </details>
     </section>
 
-    <!-- Calculation History Overlay -->
-    <aside class="history-drawer" id="history-drawer">
-      <div class="history-header">
-        <h3>History</h3>
-        <button id="clear-history-btn" class="pill-btn danger">Clear</button>
-        <button id="close-history-btn" class="icon-btn">✕</button>
-      </div>
-      <ul class="history-list" id="history-list">
-        <li class="empty-state">No calculations yet</li>
-      </ul>
-    </aside>
-
+    <!-- Footer -->
     <footer class="calc-footer">
-      <span>Crafted by <a href="https://github.com/MuzahidRezwan" target="_blank">Muzahid Rezwan</a></span>
+      <span>Developed with ❤️ by <a href="https://github.com/MuzahidRezwan" target="_blank">Muzahid Rezwan</a></span>
     </footer>
   </main>
 

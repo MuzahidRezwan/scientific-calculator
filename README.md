@@ -1,88 +1,92 @@
-# 🧮 OmniCalc — Advanced Scientific Calculator
+# 🧮 OmniCalc PRO — Scientific, Equations & DIU CGPA Suite
 
 <p align="center">
   <img src="https://img.shields.io/badge/OmniCalc-PRO-00f2fe?style=for-the-badge&logo=calculator&logoColor=black" />
+  <img src="https://img.shields.io/badge/DIU%20Grade%20System-4.00%20Scale-00ff87?style=for-the-badge&logo=graduation-cap" />
+  <img src="https://img.shields.io/badge/Equations-Quadratic%20%26%20Linear-7928ca?style=for-the-badge" />
   <img src="https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
   <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/UI-Glassmorphism%20%26%20Cyberpunk-7928ca?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/License-MIT-00ff87?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" />
 </p>
 
-An ultra-modern, high-precision **Scientific Calculator** engineered with a sleek glassmorphic cyberpunk interface and an underlying Python computational mathematics engine. 
+An all-in-one mathematical and academic suite engineered with a sleek **Cyberpunk Glassmorphism** interface. Features a full-fledged **Scientific Calculator**, **Step-by-Step Mathematical Equation Solvers**, and an official **Daffodil International University (DIU) CGPA & SGPA Calculator**.
 
 ---
 
-### ✨ Features & Capabilities
+### 🌐 Live Web Application
 
-- 🌌 **Aesthetic Glassmorphism UI:** Deep-space dark theme, ambient radial glows, and responsive tactile keypad.
-- 📐 **Dual Angle Modes:** One-click toggle between **Degrees (DEG)** and **Radians (RAD)** for all trigonometric functions.
-- 🔬 **Comprehensive Scientific Functions:**
-  - **Trigonometric & Inverses:** $\sin, \cos, \tan, \sin^{-1}, \cos^{-1}, \tan^{-1}$
-  - **Logarithms & Exponents:** $\log_{10}(x), \ln(x), e^x, x^y, 10^x$
-  - **Powers & Radicals:** $x^2, \sqrt{x}, \sqrt[3]{x}, x^{-1}$
-  - **Factorial & Constants:** $n!, \pi, e$
-- 💾 **Memory Functions:** Full support for `MC`, `MR`, `M+`, and `M-` with persistent UI status indicator.
-- 📜 **Calculation History Drawer:** LocalStorage-backed history log with instant recall on click.
-- ⌨️ **Full Keyboard Support:** Instant calculation without touching the mouse (`0-9`, `+ - * /`, `Enter`, `Backspace`, `Esc`).
-- 🐍 **Standalone Python Core:** Includes an object-oriented Python computation module with full unit-test coverage.
+> 🚀 **Experience the Live App in Your Browser:**  
+> **[https://muzahidrezwan.github.io/scientific-calculator/](https://muzahidrezwan.github.io/scientific-calculator/)**
 
 ---
 
-### 🚀 Live Demo
+### 🌟 Core Modules
 
-> 🌐 **Experience the Live Web App:**  
-> **[https://MuzahidRezwan.github.io/scientific-calculator/](https://MuzahidRezwan.github.io/scientific-calculator/)**
+#### 1. 🔬 Advanced Scientific Calculator
+- **Trigonometry & Inverses:** $\sin, \cos, \tan, \sin^{-1}, \cos^{-1}, \tan^{-1}$
+- **Dual Angle Modes:** One-click toggle between **Degrees (DEG)** and **Radians (RAD)**.
+- **Logarithms & Powers:** $\log_{10}(x), \ln(x), e^x, x^y, 10^x, \sqrt{x}, x^2$
+- **Constants & Factorials:** $\pi, e, n!$
+- **Memory & History:** `MC`, `MR`, `M+`, `M-` buffers with persistent LocalStorage calculation history drawer.
+- **Full Keyboard Navigation:** Full calculation support without using mouse.
+
+#### 2. 📐 Mathematical Equation Solvers
+- **Quadratic Equation Solver ($ax^2 + bx + c = 0$):**
+  - Discriminant ($\Delta = b^2 - 4ac$) calculation and root nature detection.
+  - Real distinct roots, real equal roots, and complex conjugate roots ($u \pm vi$).
+  - Parabola vertex $(h, k)$ coordinate calculation.
+- **System of 2 Linear Equations ($2 \times 2$ Cramer's Rule):**
+  - Solves $a_1x + b_1y = c_1$ and $a_2x + b_2y = c_2$.
+  - Automatically identifies unique solutions, coincident infinite lines, and parallel disjoint lines.
+
+#### 3. 🎓 Daffodil International University (DIU) CGPA Calculator
+Strictly configured to the official **UGC-approved DIU 4.00 Grading Scale**:
+
+| Marks Range | Letter Grade | Grade Point (GP) | Remarks |
+| :--- | :---: | :---: | :--- |
+| **80% and above** | **A+** | **4.00** | Outstanding |
+| **75% to &lt; 80%** | **A** | **3.75** | Excellent |
+| **70% to &lt; 75%** | **A-** | **3.50** | Very Good |
+| **65% to &lt; 70%** | **B+** | **3.25** | Good |
+| **60% to &lt; 65%** | **B** | **3.00** | Satisfactory |
+| **55% to &lt; 60%** | **B-** | **2.75** | Above Average |
+| **50% to &lt; 55%** | **C+** | **2.50** | Average |
+| **45% to &lt; 50%** | **C** | **2.25** | Below Average |
+| **40% to &lt; 45%** | **D** | **2.00** | Pass |
+| **Less than 40%** | **F** | **0.00** | Fail |
+
+- **Cumulative CGPA Engine:** Seamlessly combines previous cumulative CGPA and completed credits with current semester courses.
+- **Academic Standing Tracker:** Automatic detection of Honors vs. **DIU Academic Probation Alert (< 2.00)**.
+- **Dynamic Course Management:** Easily add or remove unlimited courses with custom credit weights.
 
 ---
 
-### 📂 Repository Architecture
+### 📂 Repository Structure
 
 ```text
 scientific-calculator/
-├── index.html               # Main Glassmorphic Web App Layout
-├── style.css                # Cyberpunk Glassmorphic CSS Styling
-├── app.js                   # JavaScript High-Precision Calculation Engine
+├── index.html                   # Glassmorphic Tabbed Web Application
+├── style.css                    # Cyberpunk & Glassmorphic Styling
+├── app.js                       # Calculation, Equation Solver & DIU CGPA Logic
 ├── python_engine/
-│   ├── calculator.py        # Object-Oriented Python Scientific Engine & CLI
-│   └── test_calculator.py   # Comprehensive Unit Tests
-├── .gitignore               # Ignored build & system artifacts
-└── README.md                # Project Documentation & Guide
+│   ├── calculator.py            # Python Scientific Engine
+│   ├── test_calculator.py       # Unit Tests
+│   ├── equation_solver.py       # Python Equation Solver
+│   └── diu_cgpa.py              # Python DIU CGPA Calculator
+├── .gitignore
+├── LICENSE                      # MIT License
+└── README.md
 ```
 
 ---
 
-### 💻 Quick Start & Usage
+### 💻 Python Core Usage
 
-#### 1. Running the Web Application
-Simply clone the repository and open `index.html` in any modern web browser:
-```bash
-git clone https://github.com/MuzahidRezwan/scientific-calculator.git
-cd scientific-calculator
-# Double-click index.html or launch a local server:
-# python -m http.server 8000
-```
-
-#### 2. Running the Python Engine & Tests
 ```bash
 cd python_engine
-python calculator.py
-python test_calculator.py
+python equation_solver.py
+python diu_cgpa.py
 ```
 
 ---
-
-### ⌨️ Keyboard Shortcuts Reference
-
-| Key | Action | Key | Action |
-| :---: | :--- | :---: | :--- |
-| `0` - `9` | Input Digits | `+`, `-`, `*`, `/` | Arithmetic Operators |
-| `Enter` / `=` | Evaluate Expression | `Backspace` | Delete Last Character |
-| `Escape` | Clear All (`AC`) | `.` | Decimal Point |
-
----
-
-### 📜 License
-This project is licensed under the [MIT License](LICENSE).
-
----
-*Developed with ❤️ by [Muzahid Rezwan](https://github.com/MuzahidRezwan)* 🚀
+*Crafted with precision by [Muzahid Rezwan](https://github.com/MuzahidRezwan)* 🚀

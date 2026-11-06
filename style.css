@@ -1,6 +1,6 @@
 :root {
   --bg-dark: #0a0e17;
-  --panel-bg: rgba(17, 24, 39, 0.75);
+  --panel-bg: rgba(17, 24, 39, 0.78);
   --border-color: rgba(255, 255, 255, 0.08);
   --accent-cyan: #00f2fe;
   --accent-blue: #4facfe;
@@ -35,7 +35,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 24px 16px;
   overflow-x: hidden;
   position: relative;
 }
@@ -71,7 +71,7 @@ body {
   position: relative;
   z-index: 10;
   width: 100%;
-  max-width: 580px;
+  max-width: 650px;
   background: var(--panel-bg);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
@@ -83,12 +83,14 @@ body {
   overflow: hidden;
 }
 
-/* Header */
-.calc-header {
+/* Top Navigation */
+.app-nav {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 14px;
 }
 
 .brand {
@@ -106,7 +108,7 @@ body {
 }
 
 .brand h1 {
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: -0.5px;
   background: linear-gradient(135deg, #fff 40%, var(--accent-cyan));
@@ -117,11 +119,85 @@ body {
 .brand .badge {
   font-size: 0.65rem;
   font-weight: 700;
-  padding: 2px 6px;
+  padding: 2px 7px;
   background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
   color: #fff;
   border-radius: 6px;
   -webkit-text-fill-color: #fff;
+}
+
+.nav-tabs {
+  display: flex;
+  background: rgba(10, 14, 23, 0.6);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 4px;
+  gap: 4px;
+}
+
+.nav-tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: inherit;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-tab:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.nav-tab.active {
+  background: linear-gradient(135deg, rgba(0, 242, 254, 0.2), rgba(121, 40, 202, 0.3));
+  color: #fff;
+  border: 1px solid rgba(0, 242, 254, 0.3);
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.15);
+}
+
+/* Tab Panes */
+.tab-pane {
+  display: none;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Common Section Header */
+.section-title {
+  margin-bottom: 16px;
+}
+
+.section-title h2 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+}
+
+.section-title p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* ================= TAB 1: SCIENTIFIC STYLES ================= */
+.calc-sub-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
 }
 
 .mode-switch {
@@ -147,12 +223,21 @@ body {
   box-shadow: 0 0 12px rgba(0, 242, 254, 0.25);
 }
 
+.pill-btn.danger {
+  color: var(--danger-color);
+  background: rgba(239, 68, 68, 0.15);
+}
+
+.pill-btn.danger:hover {
+  background: rgba(239, 68, 68, 0.3);
+}
+
 .icon-btn {
   background: transparent;
   border: none;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   cursor: pointer;
-  padding: 6px;
+  padding: 6px 10px;
   border-radius: var(--radius-sm);
   color: var(--text-muted);
   transition: transform 0.2s;
@@ -160,7 +245,7 @@ body {
 
 .icon-btn:hover {
   color: var(--text-main);
-  transform: scale(1.15);
+  transform: scale(1.05);
 }
 
 /* Display Screen */
@@ -168,28 +253,27 @@ body {
   background: rgba(10, 14, 23, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: var(--radius-md);
-  padding: 18px 20px;
-  margin-bottom: 20px;
+  padding: 16px 20px;
+  margin-bottom: 18px;
   text-align: right;
   box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .screen-history {
-  min-height: 22px;
+  min-height: 20px;
   font-family: 'Fira Code', monospace;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
   overflow-x: auto;
   white-space: nowrap;
-  letter-spacing: 0.5px;
 }
 
 .screen-main {
   font-family: 'Fira Code', monospace;
-  font-size: 2.3rem;
+  font-size: 2.2rem;
   font-weight: 600;
   color: var(--text-main);
-  margin: 6px 0;
+  margin: 4px 0;
   overflow-x: auto;
   white-space: nowrap;
   letter-spacing: -0.5px;
@@ -203,28 +287,24 @@ body {
   font-size: 0.7rem;
   font-weight: 600;
   color: var(--accent-cyan);
-  text-transform: uppercase;
 }
 
-.hidden {
-  display: none;
-}
+.hidden { display: none !important; }
 
 /* Keypad Grid */
 .keypad-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
+  gap: 8px;
 }
 
-/* Buttons */
 .btn {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  padding: 13px 6px;
-  font-size: 0.95rem;
+  padding: 12px 4px;
+  font-size: 0.9rem;
   font-weight: 500;
-  font-family: 'Inter', sans-serif;
+  font-family: inherit;
   color: var(--text-main);
   cursor: pointer;
   background: var(--btn-num);
@@ -235,72 +315,24 @@ body {
   user-select: none;
 }
 
-.btn:active {
-  transform: scale(0.94);
-}
-
-.btn-num {
-  font-weight: 600;
-  font-size: 1.05rem;
-}
-
-.btn-num:hover {
-  background: var(--btn-num-hover);
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.btn-sci {
-  background: var(--btn-sci);
-  color: var(--accent-cyan);
-  font-size: 0.85rem;
-}
-
-.btn-sci:hover {
-  background: var(--btn-sci-hover);
-  box-shadow: 0 0 12px rgba(0, 242, 254, 0.2);
-}
-
-.btn-fn {
-  background: rgba(255, 255, 255, 0.03);
-  color: var(--text-muted);
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
-.btn-fn:hover {
-  color: var(--text-main);
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.btn-op {
-  background: var(--btn-op);
-  color: var(--accent-blue);
-  font-size: 1.15rem;
-  font-weight: 600;
-}
-
-.btn-op:hover {
-  background: var(--btn-op-hover);
-  box-shadow: 0 0 14px rgba(79, 172, 254, 0.3);
-}
-
-.btn-danger {
-  background: rgba(239, 68, 68, 0.15);
-  color: var(--danger-color);
-  font-weight: 600;
-}
-
-.btn-danger:hover {
-  background: rgba(239, 68, 68, 0.3);
-  box-shadow: 0 0 14px rgba(239, 68, 68, 0.3);
-}
+.btn:active { transform: scale(0.94); }
+.btn-num { font-weight: 600; font-size: 1rem; }
+.btn-num:hover { background: var(--btn-num-hover); border-color: rgba(255, 255, 255, 0.2); }
+.btn-sci { background: var(--btn-sci); color: var(--accent-cyan); font-size: 0.8rem; }
+.btn-sci:hover { background: var(--btn-sci-hover); box-shadow: 0 0 10px rgba(0, 242, 254, 0.2); }
+.btn-fn { background: rgba(255, 255, 255, 0.03); color: var(--text-muted); font-size: 0.75rem; font-weight: 600; }
+.btn-fn:hover { color: var(--text-main); background: rgba(255, 255, 255, 0.08); }
+.btn-op { background: var(--btn-op); color: var(--accent-blue); font-size: 1.1rem; font-weight: 600; }
+.btn-op:hover { background: var(--btn-op-hover); box-shadow: 0 0 12px rgba(79, 172, 254, 0.3); }
+.btn-danger { background: rgba(239, 68, 68, 0.15); color: var(--danger-color); font-weight: 600; }
+.btn-danger:hover { background: rgba(239, 68, 68, 0.3); }
 
 .btn-equal {
   grid-row: span 2;
   grid-column: 6;
   background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
   color: #fff;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 700;
   border: none;
   box-shadow: 0 8px 24px rgba(0, 242, 254, 0.35);
@@ -312,9 +344,7 @@ body {
   transform: translateY(-1px);
 }
 
-.btn-zero {
-  grid-column: span 2;
-}
+.btn-zero { grid-column: span 2; }
 
 /* History Drawer */
 .history-drawer {
@@ -333,65 +363,317 @@ body {
   transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.history-drawer.active {
-  right: 0;
-}
+.history-drawer.active { right: 0; }
+.history-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; margin-bottom: 16px; }
+.history-list { list-style: none; overflow-y: auto; flex: 1; }
+.history-item { padding: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); cursor: pointer; border-radius: var(--radius-sm); }
+.history-item:hover { background: rgba(255, 255, 255, 0.05); }
+.history-expr { font-family: 'Fira Code', monospace; font-size: 0.85rem; color: var(--text-muted); }
+.history-res { font-family: 'Fira Code', monospace; font-size: 1.1rem; font-weight: 600; color: var(--accent-cyan); text-align: right; }
+.empty-state { text-align: center; color: var(--text-muted); margin-top: 40px; font-size: 0.9rem; }
 
-.history-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 12px;
+/* ================= TAB 2: EQUATION SOLVER STYLES ================= */
+.solver-card {
+  background: rgba(10, 14, 23, 0.65);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 18px;
   margin-bottom: 16px;
 }
 
-.history-header h3 {
-  font-size: 1.1rem;
+.solver-card .card-header h3 {
+  font-size: 0.95rem;
+  color: var(--accent-blue);
+  margin-bottom: 4px;
 }
 
-.history-list {
-  list-style: none;
-  overflow-y: auto;
+.solver-card .card-header code {
+  color: var(--accent-cyan);
+  background: rgba(0, 242, 254, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.subtext {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.input-row {
+  display: flex;
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.input-group {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-.history-item {
-  padding: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-  cursor: pointer;
-  border-radius: var(--radius-sm);
-  transition: background 0.15s;
+.input-group label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
 }
 
-.history-item:hover {
+input[type="number"], input[type="text"], select {
   background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.2s;
 }
 
-.history-expr {
+input:focus, select:focus {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+}
+
+.linear-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.eq-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.eq-row input {
+  width: 70px;
+  text-align: center;
+}
+
+.btn-action {
+  width: 100%;
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+  color: #fff;
+  border: none;
+  padding: 10px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(79, 172, 254, 0.25);
+  transition: all 0.2s;
+}
+
+.btn-action:hover {
+  filter: brightness(1.15);
+  transform: translateY(-1px);
+}
+
+.solution-box {
+  margin-top: 12px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(0, 242, 254, 0.15);
+  border-radius: var(--radius-sm);
+  padding: 12px;
   font-family: 'Fira Code', monospace;
   font-size: 0.85rem;
-  color: var(--text-muted);
 }
 
-.history-res {
-  font-family: 'Fira Code', monospace;
-  font-size: 1.1rem;
-  font-weight: 600;
+.formula-info {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  margin-bottom: 6px;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+  padding-bottom: 4px;
+}
+
+.solution-output {
+  color: var(--accent-green);
+  line-height: 1.5;
+}
+
+/* ================= TAB 3: DIU CGPA STYLES ================= */
+.cgpa-meta-card {
+  background: rgba(10, 14, 23, 0.6);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  margin-bottom: 14px;
+}
+
+.courses-card {
+  background: rgba(10, 14, 23, 0.6);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.courses-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.courses-header h3 {
+  font-size: 0.95rem;
   color: var(--accent-cyan);
-  text-align: right;
 }
 
-.empty-state {
-  text-align: center;
-  color: var(--text-muted);
-  margin-top: 40px;
-  font-size: 0.9rem;
+.table-responsive {
+  max-height: 240px;
+  overflow-y: auto;
+  margin-bottom: 14px;
 }
+
+.course-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.course-table th {
+  text-align: left;
+  color: var(--text-muted);
+  font-weight: 500;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.course-table td {
+  padding: 6px 4px;
+}
+
+.course-table input, .course-table select {
+  width: 100%;
+  padding: 6px 8px;
+  font-size: 0.8rem;
+}
+
+.del-course-btn {
+  background: transparent;
+  border: none;
+  color: var(--danger-color);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 4px;
+  transition: transform 0.2s;
+}
+
+.del-course-btn:hover { transform: scale(1.2); }
+
+.cgpa-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-danger-pill {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: var(--danger-color);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* CGPA Results Card */
+.cgpa-result-card {
+  background: rgba(10, 14, 23, 0.8);
+  border: 1px solid rgba(0, 242, 254, 0.25);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.1);
+}
+
+.cgpa-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  text-align: center;
+}
+
+.metric-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metric-box.highlight {
+  border-color: var(--accent-cyan);
+  background: rgba(0, 242, 254, 0.08);
+}
+
+.metric-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.metric-val {
+  font-family: 'Fira Code', monospace;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+}
+
+.standing-banner {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+}
+
+/* Reference Table Details */
+.diu-grade-sheet {
+  background: rgba(10, 14, 23, 0.5);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  font-size: 0.8rem;
+}
+
+.diu-grade-sheet summary {
+  cursor: pointer;
+  color: var(--accent-blue);
+  font-weight: 600;
+  outline: none;
+}
+
+.reference-table {
+  width: 100%;
+  margin-top: 10px;
+  border-collapse: collapse;
+}
+
+.reference-table th, .reference-table td {
+  padding: 6px 8px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.reference-table th { color: var(--text-muted); }
 
 /* Footer */
 .calc-footer {
-  margin-top: 18px;
+  margin-top: 20px;
   text-align: center;
   font-size: 0.75rem;
   color: var(--text-muted);
@@ -403,23 +685,13 @@ body {
   font-weight: 600;
 }
 
-.calc-footer a:hover {
-  text-decoration: underline;
-}
+.calc-footer a:hover { text-decoration: underline; }
 
-/* Responsive adjustments */
-@media (max-width: 520px) {
-  .calculator-container {
-    padding: 16px;
-  }
-  .keypad-grid {
-    gap: 6px;
-  }
-  .btn {
-    padding: 10px 4px;
-    font-size: 0.8rem;
-  }
-  .screen-main {
-    font-size: 1.8rem;
-  }
+@media (max-width: 540px) {
+  .calculator-container { padding: 14px; }
+  .keypad-grid { gap: 6px; }
+  .btn { padding: 9px 3px; font-size: 0.78rem; }
+  .screen-main { font-size: 1.7rem; }
+  .input-row { flex-direction: column; }
+  .cgpa-metrics { grid-template-columns: 1fr; }
 }
